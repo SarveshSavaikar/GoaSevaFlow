@@ -3,6 +3,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { FaMicrophone } from 'react-icons/fa';
 import logo from './assets/goasevaflow-logo.png';
 import './index.css';
+import GraphNode from './components/GraphNode';
 
 const GoaSevaFlow = () => {
   const [input, setInput] = useState('');
@@ -11,6 +12,8 @@ const GoaSevaFlow = () => {
   const [typing, setTyping] = useState(false);
   const recognitionRef = useRef(null);
   const chatEndRef = useRef(null);
+  const [showGraphModal, setShowGraphModal] = useState(false);
+  const [graphSize, setGraphSize] = useState({ width: '100%', height: '200px' });
 
   // Initial welcome message
   useEffect(() => {
@@ -57,24 +60,57 @@ const GoaSevaFlow = () => {
   };
 
   const handleSend = (message) => {
-    if (!message.trim()) return;
+  if (!message.trim()) return;
 
-    const userMsg = { from: 'user', text: message, type: 'text' };
-    setChatHistory((prev) => [...prev, userMsg]);
-    setInput('');
-    setTyping(true);
+  const userMsg = { from: 'user', text: message, type: 'text' };
+  setChatHistory((prev) => [...prev, userMsg]);
+  setInput('');
+  setTyping(true);
 
-    setTimeout(() => {
-      const botReply = {
+  fetch('http://localhost:8000/get-roadmap/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ query: message }),
+  })
+    .then((res) => res.json())
+    .then((data) => {
+      
+      const graphNode = {
         from: 'bot',
-        text: `Here is the guidance for: "${message}"`,
-        type: 'canvas', // show diagram canvas box for mapped flow
+        type: 'graph',
+        data: data,
       };
 
-      setChatHistory((prev) => [...prev, botReply]);
+      const botReply = {
+        from: 'bot',
+        text: 'Here is the service roadmap:',
+        type: 'text',
+      };
+
+      
+      setChatHistory((prev) => {
+        const updated = [...prev, botReply, graphNode];
+        console.log("Graph Data Added:", graphNode.data);
+        // console.log("🧪 typeof edges:", typeof msg.data?.edges);
+        return updated;
+      });
+
       setTyping(false);
-    }, 1000);
-  };
+    })
+    .catch((error) => {
+      console.error('Error fetching roadmap:', error);
+      setChatHistory((prev) => [
+        ...prev,
+        {
+          from: 'bot',
+          text: 'Sorry, there was an error processing your request.',
+          type: 'text',
+        },
+      ]);
+      setTyping(false);
+    });
+};
+
 
   const handleNewChat = () => {
     setChatHistory([
@@ -91,15 +127,9 @@ const GoaSevaFlow = () => {
   return (
     <div className='goasevaflow-container'>
       <div className='goasevaflow-header'>
-        <img
-          src={logo}
-          alt='GoaSevaFlow Logo'
-          className='goasevaflow-logo'
-        />
+        <img src={logo} alt='GoaSevaFlow Logo' className='goasevaflow-logo' />
         <h1 className='goasevaflow-title'>GoaSevaFlow</h1>
-        <button
-          className='new-chat-btn'
-          onClick={handleNewChat}>
+        <button className='new-chat-btn' onClick={handleNewChat}>
           New Chat
         </button>
       </div>
@@ -112,13 +142,26 @@ const GoaSevaFlow = () => {
               msg.from === 'user'
                 ? 'goasevaflow-user-bubble'
                 : 'goasevaflow-bot-bubble'
-            }>
-            {msg.type === 'canvas' ? (
-              <pre className='bot-canvas-box'>
-                {`[This space will show mapped guidance/flow chart for: "${msg.text
-                  .replace('Here is the guidance for: "', '')
-                  .replace('"', '')}"]`}
-              </pre>
+            }
+          >
+            {msg.type === 'graph' ? (
+              <div className='bot-canvas-box'>
+                <GraphNode
+                  nodes={msg.data.nodes}
+                  edges={msg.data.edges}
+                  width={graphSize.width}
+                  height={graphSize.height}
+                />
+                <button
+                  className='view-full-graph-btn'
+                  onClick={() => {
+                    setGraphSize({ width: '100vw', height: '1000px' });
+                    setShowGraphModal(true);
+                  }}
+                >
+                  View Full Graph
+                </button>
+              </div>
             ) : (
               msg.text
             )}
@@ -143,15 +186,41 @@ const GoaSevaFlow = () => {
         />
         <button
           onClick={() => handleSend(input)}
-          className='goasevaflow-send-btn'>
+          className='goasevaflow-send-btn'
+        >
           Send
         </button>
-        <button
-          onClick={startListening}
-          className='goasevaflow-mic-btn'>
+        <button onClick={startListening} className='goasevaflow-mic-btn'>
           <FaMicrophone style={{ color: 'white' }} />
         </button>
       </div>
+
+      {showGraphModal && (
+        <div className='graph-modal-overlay'>
+          <div className='graph-modal-content'>
+            <button
+              className='graph-modal-close'
+              onClick={() => {
+                setShowGraphModal(false);
+                setGraphSize({ width: '100%', height: '250px' });
+              }}
+            >
+              Close
+            </button>
+            <GraphNode
+              nodes={
+                chatHistory.find((msg) => msg.type === 'graph')?.data.nodes
+                  
+              }
+              edges={
+                chatHistory.find((msg) => msg.type === 'graph')?.data.edges
+              }
+              width='100%'
+              height='1000px'
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

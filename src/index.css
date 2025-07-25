@@ -126,3 +126,70 @@ body {
   cursor: pointer;
   margin-left: 10px;
 }
+.bot-canvas-box {
+  width: auto;
+  height: auto;
+  margin-top: 10px;
+}
+.graph-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999; /* VERY HIGH */
+}
+
+.graph-modal-content {
+  background: #fff;
+  padding: 20px;
+  width: 90%;
+  height: 80%;
+  border-radius: 8px;
+  position: relative;
+  overflow: auto;
+  z-index: 10000;
+}
+
+.graph-modal-close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: #dc3545;
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  z-index: 10001;
+}
+
+.view-full-graph-btn {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.node {
+ border: '2px solid #555' !important;
+  border-color: red;
+  border-width: 10px;
+  background-color: rgb(247, 181, 181);
+  width: 10vw;
+  height: 10vh;
+  font-size: 0.5em;
+  font-weight: bold;
+}
+
+.start-node {
+  
+}
