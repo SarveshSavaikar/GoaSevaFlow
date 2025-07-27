@@ -4,8 +4,9 @@ import { Handle, Position } from 'reactflow';
 
 const CustomNode = ({ data }) => {
   return (
-    <div className="node">
-        <Handle type="target" position={Position.Top} />
+    <div className="custom-node-container">
+      <div class = "custom-node-widget">
+          <Handle type="target" position={Position.Top} />
       <div className="">{data.title}</div>
       <div className="">{data.description}</div>
       
@@ -22,6 +23,7 @@ const CustomNode = ({ data }) => {
       </button>
 
       <Handle type="source" position={Position.Bottom} />
+      </div>
     </div>
   );
 };
