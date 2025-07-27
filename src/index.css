@@ -195,9 +195,13 @@ body {
   border-radius: 8px;
   padding: 10px;
   background: white;
+  height: 25vh;
 }
 
 .custom-node-widget {
   border: 1px dashed #999;
   padding: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

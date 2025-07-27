@@ -1,5 +1,5 @@
 /* global webkitSpeechRecognition */
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { FaMicrophone } from 'react-icons/fa';
 import logo from './assets/goasevaflow-logo.png';
 import './index.css';
@@ -15,6 +15,8 @@ const GoaSevaFlow = () => {
   const [showGraphModal, setShowGraphModal] = useState(false);
   const [graphSize, setGraphSize] = useState({ width: '100%', height: '200px' });
 
+
+
   // Initial welcome message
   useEffect(() => {
     setChatHistory([
@@ -23,13 +25,64 @@ const GoaSevaFlow = () => {
         text: 'Hi! I’m GoaSevaFlow 🤖. How can I assist you today?',
         type: 'text',
       },
+      {
+        from: 'bot',
+        data: {},
+        type: 'graph'
+      }
     ]);
   }, []);
 
   // Scroll to bottom on new message
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+    console.log("Full Chat History:", chatHistory);
+
   }, [chatHistory]);
+
+  const handleSend = useCallback((message) => {
+    if (!message.trim()) return;
+
+    const userMsg = { from: 'user', text: message, type: 'text' };
+    setChatHistory((prev) => [...prev, userMsg]);
+    setInput('');
+    setTyping(true);
+
+    fetch('http://localhost:8000/get-roadmap/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ query: message }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const graphNode = {
+          from: 'bot',
+          type: 'graph',
+          data: data,
+        };
+
+        const botReply = {
+          from: 'bot',
+          text: 'Here is the service roadmap:',
+          type: 'text',
+        };
+
+        setChatHistory((prev) => [...prev, botReply, graphNode]);
+        setTyping(false);
+      })
+      .catch((error) => {
+        console.error('Error fetching roadmap:', error);
+        setChatHistory((prev) => [
+          ...prev,
+          {
+            from: 'bot',
+            text: 'Sorry, there was an error processing your request.',
+            type: 'text',
+          },
+        ]);
+        setTyping(false);
+      });
+  }, []);
 
   // Set up speech recognition
   useEffect(() => {
@@ -44,72 +97,35 @@ const GoaSevaFlow = () => {
       recognition.onresult = (event) => {
         const transcript = event.results[0][0].transcript;
         setInput(transcript);
-        handleSend(transcript);
+        handleSend(transcript);  // This is now safely defined
       };
 
       recognition.onend = () => setListening(false);
       recognitionRef.current = recognition;
     }
-  }, []);
+  }, [handleSend]);
 
-  const startListening = () => {
-    if (recognitionRef.current && !listening) {
-      setListening(true);
-      recognitionRef.current.start();
-    }
-  };
 
-  const handleSend = (message) => {
-  if (!message.trim()) return;
+const startListening = () => {
+  if (!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
+    alert("Speech Recognition not supported in this browser.");
+    return;
+  }
 
-  const userMsg = { from: 'user', text: message, type: 'text' };
-  setChatHistory((prev) => [...prev, userMsg]);
-  setInput('');
-  setTyping(true);
-
-  fetch('http://localhost:8000/get-roadmap/', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ query: message }),
-  })
-    .then((res) => res.json())
-    .then((data) => {
-      
-      const graphNode = {
-        from: 'bot',
-        type: 'graph',
-        data: data,
-      };
-
-      const botReply = {
-        from: 'bot',
-        text: 'Here is the service roadmap:',
-        type: 'text',
-      };
-
-      
-      setChatHistory((prev) => {
-        const updated = [...prev, botReply, graphNode];
-        console.log("Graph Data Added:", graphNode.data);
-        // console.log("🧪 typeof edges:", typeof msg.data?.edges);
-        return updated;
+  if (recognitionRef.current && !listening) {
+    navigator.mediaDevices.getUserMedia({ audio: true })
+      .then(() => {
+        setListening(true);
+        recognitionRef.current.start();
+      })
+      .catch((err) => {
+        console.error("Microphone permission denied:", err);
       });
-
-      setTyping(false);
-    })
-    .catch((error) => {
-      console.error('Error fetching roadmap:', error);
-      setChatHistory((prev) => [
-        ...prev,
-        {
-          from: 'bot',
-          text: 'Sorry, there was an error processing your request.',
-          type: 'text',
-        },
-      ]);
-      setTyping(false);
-    });
+  }
 };
+
+
+
 
 
   const handleNewChat = () => {
@@ -119,6 +135,7 @@ const GoaSevaFlow = () => {
         text: 'Hi! I’m GoaSevaFlow 🤖. How can I assist you today?',
         type: 'text',
       },
+      
     ]);
     setInput('');
     setTyping(false);
@@ -182,7 +199,7 @@ const GoaSevaFlow = () => {
           value={input}
           onChange={(e) => setInput(e.target.value)}
           className='goasevaflow-input'
-          onKeyDown={(e) => e.key === 'Enter' && handleSend(input)}
+          // onKeyDown={(e) => e.key === 'Enter' && handleSend(input)}
         />
         <button
           onClick={() => handleSend(input)}
@@ -209,12 +226,11 @@ const GoaSevaFlow = () => {
             </button>
             <GraphNode
               nodes={
-                chatHistory.find((msg) => msg.type === 'graph')?.data.nodes
-                  
-              }
-              edges={
-                chatHistory.find((msg) => msg.type === 'graph')?.data.edges
-              }
+    chatHistory.slice().reverse().find((msg) => msg.type === 'graph')?.data.nodes
+  }
+  edges={
+    chatHistory.slice().reverse().find((msg) => msg.type === 'graph')?.data.edges
+  }
               width='100%'
               height='1000px'
             />
