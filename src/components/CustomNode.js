@@ -4,25 +4,37 @@ import { Handle, Position } from 'reactflow';
 
 const CustomNode = ({ data }) => {
   return (
-    <div className="custom-node-container">
-      <div class = "custom-node-widget">
-          <Handle type="target" position={Position.Top} />
-      <div className="">{data.title}</div>
-      <div className="">{data.description}</div>
-      
-      <div className="">
-        <label className="">Status:</label>
-        <div className="">{data.status}</div>
-      </div>
+    <div className='custom-node-container'>
+      <div className='custom-node-widget'>
+        {/* Top Handle */}
+        <Handle
+          type='target'
+          position={Position.Top}
+        />
 
-      <button
-        className="view-full-graph-btn"
-        onClick={() => window.open(data.link[0], '_blank')}
-      >
-        Action
-      </button>
+        {/* Title */}
+        <h3 className='node-title'>{data.title}</h3>
 
-      <Handle type="source" position={Position.Bottom} />
+        {/* Description */}
+        <p className='node-description'>{data.description}</p>
+
+        {/* Status */}
+        <p className='node-status'>
+          <strong>Status:</strong> {data.status}
+        </p>
+
+        {/* Action Button */}
+        <button
+          className='node-action-btn'
+          onClick={() => window.open(data.link[0], '_blank')}>
+          Action
+        </button>
+
+        {/* Bottom Handle */}
+        <Handle
+          type='source'
+          position={Position.Bottom}
+        />
       </div>
     </div>
   );

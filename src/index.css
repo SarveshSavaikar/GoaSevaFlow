@@ -102,7 +102,7 @@ body {
 
 .goasevaflow-input {
   flex: 1;
-  padding: 10px;
+  padding: 15px;
   border-radius: 10px;
   border: 1px solid #ccc;
   margin-right: 10px;
@@ -127,8 +127,8 @@ body {
   margin-left: 10px;
 }
 .bot-canvas-box {
-  width: auto;
-  height: auto;
+  width: 100%;
+  height: 100%;
   margin-top: 10px;
 }
 .graph-modal-overlay {
@@ -149,10 +149,13 @@ body {
   padding: 20px;
   width: 90%;
   height: 80%;
+  max-width: 1000px;
+  max-height: 90vh;
   border-radius: 8px;
   position: relative;
-  overflow: auto;
-  z-index: 10000;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .graph-modal-close {
@@ -179,21 +182,13 @@ body {
   font-size: 14px;
 }
 
-.node {
-  border: '2px solid #555' !important;
-  border-color: red;
-  border-width: 10px;
-  background-color: rgb(247, 181, 181);
-  width: 10vw;
-  height: 10vh;
-  font-size: 0.5em;
-  font-weight: bold;
-}
-
+/* Node styling in graph */
 .custom-node-container {
   border: 2px solid #333;
-  border-radius: 8px;
-  padding: 10px;
+  width: 28vw;
+  height: auto;
+  border-radius: 10px;
+  padding: 15px;
   background: white;
   height: 25vh;
 }
@@ -201,7 +196,4 @@ body {
 .custom-node-widget {
   border: 1px dashed #999;
   padding: 8px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }

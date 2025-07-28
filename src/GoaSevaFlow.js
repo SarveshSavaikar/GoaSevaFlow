@@ -15,8 +15,6 @@ const GoaSevaFlow = () => {
   const [showGraphModal, setShowGraphModal] = useState(false);
   const [graphSize, setGraphSize] = useState({ width: '100%', height: '200px' });
 
-
-
   // Initial welcome message
   useEffect(() => {
     setChatHistory([
@@ -25,19 +23,12 @@ const GoaSevaFlow = () => {
         text: 'Hi! I’m GoaSevaFlow 🤖. How can I assist you today?',
         type: 'text',
       },
-      {
-        from: 'bot',
-        data: {},
-        type: 'graph'
-      }
     ]);
   }, []);
 
   // Scroll to bottom on new message
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-    console.log("Full Chat History:", chatHistory);
-
   }, [chatHistory]);
 
   const handleSend = useCallback((message) => {
@@ -67,22 +58,29 @@ const GoaSevaFlow = () => {
           type: 'text',
         };
 
-        setChatHistory((prev) => [...prev, botReply, graphNode]);
-        setTyping(false);
-      })
-      .catch((error) => {
-        console.error('Error fetching roadmap:', error);
-        setChatHistory((prev) => [
-          ...prev,
-          {
-            from: 'bot',
-            text: 'Sorry, there was an error processing your request.',
-            type: 'text',
-          },
-        ]);
-        setTyping(false);
+      
+      setChatHistory((prev) => {
+        const updated = [...prev, botReply, graphNode];
+        console.log("Graph Data Added:", graphNode.data);
+        // console.log("🧪 typeof edges:", typeof msg.data?.edges);
+        return updated;
       });
-  }, []);
+
+      setTyping(false);
+    })
+    .catch((error) => {
+      console.error('Error fetching roadmap:', error);
+      setChatHistory((prev) => [
+        ...prev,
+        {
+          from: 'bot',
+          text: 'Sorry, there was an error processing your request.',
+          type: 'text',
+        },
+      ]);
+      setTyping(false);
+    });
+};
 
   // Set up speech recognition
   useEffect(() => {
@@ -97,7 +95,7 @@ const GoaSevaFlow = () => {
       recognition.onresult = (event) => {
         const transcript = event.results[0][0].transcript;
         setInput(transcript);
-        handleSend(transcript);  // This is now safely defined
+        handleSend(transcript); // This is now safely defined
       };
 
       recognition.onend = () => setListening(false);
@@ -105,28 +103,26 @@ const GoaSevaFlow = () => {
     }
   }, [handleSend]);
 
+  const startListening = () => {
+    if (
+      !('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)
+    ) {
+      alert('Speech Recognition not supported in this browser.');
+      return;
+    }
 
-const startListening = () => {
-  if (!('webkitSpeechRecognition' in window || 'SpeechRecognition' in window)) {
-    alert("Speech Recognition not supported in this browser.");
-    return;
-  }
-
-  if (recognitionRef.current && !listening) {
-    navigator.mediaDevices.getUserMedia({ audio: true })
-      .then(() => {
-        setListening(true);
-        recognitionRef.current.start();
-      })
-      .catch((err) => {
-        console.error("Microphone permission denied:", err);
-      });
-  }
-};
-
-
-
-
+    if (recognitionRef.current && !listening) {
+      navigator.mediaDevices
+        .getUserMedia({ audio: true })
+        .then(() => {
+          setListening(true);
+          recognitionRef.current.start();
+        })
+        .catch((err) => {
+          console.error('Microphone permission denied:', err);
+        });
+    }
+  };
 
   const handleNewChat = () => {
     setChatHistory([
@@ -144,9 +140,15 @@ const startListening = () => {
   return (
     <div className='goasevaflow-container'>
       <div className='goasevaflow-header'>
-        <img src={logo} alt='GoaSevaFlow Logo' className='goasevaflow-logo' />
+        <img
+          src={logo}
+          alt='GoaSevaFlow Logo'
+          className='goasevaflow-logo'
+        />
         <h1 className='goasevaflow-title'>GoaSevaFlow</h1>
-        <button className='new-chat-btn' onClick={handleNewChat}>
+        <button
+          className='new-chat-btn'
+          onClick={handleNewChat}>
           New Chat
         </button>
       </div>
@@ -159,8 +161,7 @@ const startListening = () => {
               msg.from === 'user'
                 ? 'goasevaflow-user-bubble'
                 : 'goasevaflow-bot-bubble'
-            }
-          >
+            }>
             {msg.type === 'graph' ? (
               <div className='bot-canvas-box'>
                 <GraphNode
@@ -174,8 +175,7 @@ const startListening = () => {
                   onClick={() => {
                     setGraphSize({ width: '100vw', height: '1000px' });
                     setShowGraphModal(true);
-                  }}
-                >
+                  }}>
                   View Full Graph
                 </button>
               </div>
@@ -203,11 +203,12 @@ const startListening = () => {
         />
         <button
           onClick={() => handleSend(input)}
-          className='goasevaflow-send-btn'
-        >
+          className='goasevaflow-send-btn'>
           Send
         </button>
-        <button onClick={startListening} className='goasevaflow-mic-btn'>
+        <button
+          onClick={startListening}
+          className='goasevaflow-mic-btn'>
           <FaMicrophone style={{ color: 'white' }} />
         </button>
       </div>
@@ -220,17 +221,17 @@ const startListening = () => {
               onClick={() => {
                 setShowGraphModal(false);
                 setGraphSize({ width: '100%', height: '250px' });
-              }}
-            >
+              }}>
               Close
             </button>
             <GraphNode
               nodes={
-    chatHistory.slice().reverse().find((msg) => msg.type === 'graph')?.data.nodes
-  }
-  edges={
-    chatHistory.slice().reverse().find((msg) => msg.type === 'graph')?.data.edges
-  }
+                chatHistory.find((msg) => msg.type === 'graph')?.data.nodes
+                  
+              }
+              edges={
+                chatHistory.find((msg) => msg.type === 'graph')?.data.edges
+              }
               width='100%'
               height='1000px'
             />

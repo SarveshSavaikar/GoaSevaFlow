@@ -42,7 +42,7 @@ const nodes = [
 const edges = [{ id: 'e1-2', source: '1', target: '2', type: 'default' }];
 
 // ✅ Accept width and height as props
-const GraphNode = ({ edges, nodes, width = '100%', height = '100%' }) => {
+const GraphNode = ({ edges_, nodes_, width = '100%', height = '100%' }) => {
   console.log('Rendering Graph with Nodes:', nodes);
   console.log('Rendering Graph with Edges:', edges);
 
