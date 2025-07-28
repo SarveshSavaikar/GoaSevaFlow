@@ -83,6 +83,7 @@ body {
   font-family: monospace;
   white-space: pre-wrap;
   overflow-x: auto;
+  overflow-y: auto;
   color: #333;
   margin-top: 10px;
   border: 1px solid #ccc;
