@@ -8,7 +8,7 @@ body {
 }
 
 .goasevaflow-container {
-  max-width: 600px;
+  max-width: 700px;
   margin: 30px auto;
   border-radius: 15px;
   overflow: hidden;
@@ -29,19 +29,19 @@ body {
 }
 
 .goasevaflow-logo {
-  height: 40px;
+  height: 70px;
 }
 
 .goasevaflow-title {
   font-family: 'Lexend Zetta', sans-serif;
-  font-size: 24px;
+  font-size: 30px;
 }
 
 .new-chat-btn {
   background: white;
   color: #0056b3;
   border: none;
-  padding: 6px 12px;
+  padding: 8px 14px;
   border-radius: 6px;
   cursor: pointer;
   font-weight: bold;
@@ -180,7 +180,7 @@ body {
 }
 
 .node {
- border: '2px solid #555' !important;
+  border: '2px solid #555' !important;
   border-color: red;
   border-width: 10px;
   background-color: rgb(247, 181, 181);
