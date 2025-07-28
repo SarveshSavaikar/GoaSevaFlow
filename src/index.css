@@ -183,7 +183,17 @@ body {
   font-size: 14px;
 }
 
-/* Node styling in graph */
+.node {
+  border: '2px solid #555' !important;
+  border-color: red;
+  border-width: 10px;
+  background-color: rgb(247, 181, 181);
+  width: 10vw;
+  height: 10vh;
+  font-size: 0.5em;
+  font-weight: bold;
+}
+
 .custom-node-container {
   border: 2px solid #333;
   width: 28vw;
