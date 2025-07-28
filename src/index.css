@@ -195,5 +195,36 @@ body {
 
 .custom-node-widget {
   border: 1px dashed #999;
-  padding: 8px;
+  padding: 15px;
+}
+
+/* Graph node content */
+.node-title {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.node-description {
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.node-status {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.node-action-btn {
+  font-size: 16px;
+  padding: 10px 18px;
+  background-color: #1e88e5;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.node-action-btn:hover {
+  background-color: #1565c0;
 }

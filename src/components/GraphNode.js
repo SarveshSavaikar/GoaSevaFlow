@@ -18,7 +18,7 @@ const nodes = [
   {
     id: '1',
     type: 'custom', // important
-    position: { x: 100, y: 100 },
+    position: { x: 350, y: 100 },
     data: {
       title: 'Apply for PAN Card',
       description: 'Follow the steps below to apply',
@@ -29,7 +29,18 @@ const nodes = [
   {
     id: '2',
     type: 'custom', // important
-    position: { x: 300, y: 300 },
+    position: { x: 350, y: 400 },
+    data: {
+      title: 'Apply for PAN Card',
+      description: 'Follow the steps below to apply',
+      status: 'Pending',
+      onClick: () => alert('Button inside node clicked!'),
+    },
+  },
+  {
+    id: '3',
+    type: 'custom', // important
+    position: { x: 350, y: 700 },
     data: {
       title: 'Apply for PAN Card',
       description: 'Follow the steps below to apply',
