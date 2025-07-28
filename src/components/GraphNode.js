@@ -39,19 +39,22 @@ const nodes = [
   },
 ];
 
-const edges = [
-  { id: 'e1-2', source: '1', target: '2' ,type: 'default',}
-];
+const edges = [{ id: 'e1-2', source: '1', target: '2', type: 'default' }];
 
 // ✅ Accept width and height as props
-const GraphNode = ({ edges_,nodes_ ,width = '100%', height = '100%' }) => {
-  console.log("Rendering Graph with Nodes:", nodes);
-console.log("Rendering Graph with Edges:", edges);
+const GraphNode = ({ edges, nodes, width = '100%', height = '100%' }) => {
+  console.log('Rendering Graph with Nodes:', nodes);
+  console.log('Rendering Graph with Edges:', edges);
 
-if (!nodes || !edges) return <div>Waiting for graph data...</div>;
+  if (!nodes || !edges) return <div>Waiting for graph data...</div>;
   return (
     <div style={{ width, height }}>
-      <ReactFlow nodes={nodes} edges={edges} nodeTypes={nodeTypes}fitView />
+      <ReactFlow
+        nodes={nodes}
+        edges={edges}
+        nodeTypes={nodeTypes}
+        fitView
+      />
     </div>
   );
 };
