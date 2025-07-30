@@ -13,7 +13,10 @@ const GoaSevaFlow = () => {
   const recognitionRef = useRef(null);
   const chatEndRef = useRef(null);
   const [showGraphModal, setShowGraphModal] = useState(false);
-  const [graphSize, setGraphSize] = useState({ width: '100%', height: '200px' });
+  const [graphSize, setGraphSize] = useState({
+    width: '100%',
+    height: '200px',
+  });
 
   // Initial welcome message
   useEffect(() => {
@@ -22,6 +25,12 @@ const GoaSevaFlow = () => {
         from: 'bot',
         text: 'Hi! I’m GoaSevaFlow 🤖. How can I assist you today?',
         type: 'text',
+      },
+      {
+        from: 'bot',
+        text: '',
+        type: 'graph',
+        data: [],
       },
     ]);
   }, []);
@@ -58,29 +67,28 @@ const GoaSevaFlow = () => {
           type: 'text',
         };
 
-      
-      setChatHistory((prev) => {
-        const updated = [...prev, botReply, graphNode];
-        console.log("Graph Data Added:", graphNode.data);
-        // console.log("🧪 typeof edges:", typeof msg.data?.edges);
-        return updated;
-      });
+        setChatHistory((prev) => {
+          const updated = [...prev, botReply, graphNode];
+          console.log('Graph Data Added:', graphNode.data);
+          // console.log("🧪 typeof edges:", typeof msg.data?.edges);
+          return updated;
+        });
 
-      setTyping(false);
-    })
-    .catch((error) => {
-      console.error('Error fetching roadmap:', error);
-      setChatHistory((prev) => [
-        ...prev,
-        {
-          from: 'bot',
-          text: 'Sorry, there was an error processing your request.',
-          type: 'text',
-        },
-      ]);
-      setTyping(false);
-    });
-};
+        setTyping(false);
+      })
+      .catch((error) => {
+        console.error('Error fetching roadmap:', error);
+        setChatHistory((prev) => [
+          ...prev,
+          {
+            from: 'bot',
+            text: 'Sorry, there was an error processing your request.',
+            type: 'text',
+          },
+        ]);
+        setTyping(false);
+      });
+  }, []);
 
   // Set up speech recognition
   useEffect(() => {
@@ -131,7 +139,6 @@ const GoaSevaFlow = () => {
         text: 'Hi! I’m GoaSevaFlow 🤖. How can I assist you today?',
         type: 'text',
       },
-      
     ]);
     setInput('');
     setTyping(false);
@@ -165,8 +172,8 @@ const GoaSevaFlow = () => {
             {msg.type === 'graph' ? (
               <div className='bot-canvas-box'>
                 <GraphNode
-                  nodes={msg.data.nodes}
-                  edges={msg.data.edges}
+                  nodes={[]}
+                  edges={[]}
                   width={graphSize.width}
                   height={graphSize.height}
                 />
@@ -227,7 +234,6 @@ const GoaSevaFlow = () => {
             <GraphNode
               nodes={
                 chatHistory.find((msg) => msg.type === 'graph')?.data.nodes
-                  
               }
               edges={
                 chatHistory.find((msg) => msg.type === 'graph')?.data.edges

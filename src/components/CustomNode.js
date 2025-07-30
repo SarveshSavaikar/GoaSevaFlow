@@ -1,4 +1,3 @@
-// src/components/CustomNode.js
 import React, { useState } from 'react';
 import { Handle, Position } from 'reactflow';
 
@@ -11,10 +10,23 @@ const CustomNode = ({ data }) => {
     setChecked(!checked);
   };
 
+  const containerStyle = {
+    border: '2px dashed #333',
+    borderRadius: '10px',
+    padding: '15px',
+    width: '25vw',
+    height: '20vh',
+    backgroundColor: data.isFirst
+      ? '#ffaeaeff' // light cyan for first node
+      : data.isLast
+      ? '#b2ffc7ff' // light orange for last node
+      : '#ffffff', // default white
+  };
+
   return (
     <center>
       <div className='custom-node-container'>
-        <div className='custom-node-widget'>
+        <div style={containerStyle}>
           {/* Top Handle */}
           <Handle
             type='target'
@@ -34,10 +46,7 @@ const CustomNode = ({ data }) => {
                 type='checkbox'
                 checked={checked}
                 onChange={handleCheckboxChange}
-                style={{
-                  marginRight: '5px',
-                  transform: 'scale(1.3)',
-                }}
+                style={{ marginRight: '5px', transform: 'scale(1.3)' }}
               />
               <strong>Status:</strong> {checked ? 'Completed' : 'Pending'}
             </label>
