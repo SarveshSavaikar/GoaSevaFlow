@@ -241,3 +241,68 @@ body {
 .node-action-btn:hover {
   background-color: #1565c0;
 }
+
+.auth-container {
+  height: 60vh;
+  width: 30vw;
+  margin: 80px auto;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  justify-content: space-between;
+}
+
+.auth-container h2 {
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.auth-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.auth-container input {
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.auth-container button {
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.auth-container p {
+  margin-top: 10px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.auth-link {
+  color: #007bff;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.login-header {
+  align-items: center;
+  background: #1d7ce2;
+  color: white;
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
+}
+.login-title {
+  font-family: 'Lexend Zetta', sans-serif;
+  font-size: 25px;
+}

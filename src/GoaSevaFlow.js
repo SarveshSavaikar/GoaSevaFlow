@@ -155,8 +155,11 @@ const GoaSevaFlow = () => {
         <h1 className='goasevaflow-title'>GoaSevaFlow</h1>
         <button
           className='new-chat-btn'
-          onClick={handleNewChat}>
-          New Chat
+          onClick={() => {
+            localStorage.removeItem('isLoggedIn');
+            window.location.href = '/login';
+          }}>
+          Logout
         </button>
       </div>
 
