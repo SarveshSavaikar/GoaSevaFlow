@@ -1,0 +1,716 @@
+{
+  "application for aadhar card": {
+    "description": [
+      "Apply for a new Aadhar card",
+      "Reapply for a lost or misplaced Aadhar card",
+      "Update details on Aadhar card",
+      "Change address or phone number on Aadhar",
+      "Correct spelling mistakes in Aadhar card"
+    ],
+    "documents": [
+      {
+        "identity_proof": [
+          "Passport",
+          "PAN Card",
+          "Voter ID Card",
+          "Driving License"
+        ]
+      },
+      {
+        "address_proof": [
+          "Utility Bill (Electricity/Water/Telephone)",
+          "Bank Statement",
+          "Ration Card",
+          "Passport"
+        ]
+      },
+      "Photograph",
+      "Date of Birth Proof (Birth Certificate/SSLC/Passport)"
+    ],
+    "steps": [
+      {
+        "title": "Locate nearest Aadhaar enrolment center",
+        "description": "Visit the official UIDAI website to find your nearest Aadhaar Kendra.",
+        "documents_required": []
+      },
+      {
+        "title": "Book appointment (optional)",
+        "description": "Schedule a time slot online for faster processing at Aadhaar Seva Kendra.",
+        "documents_required": []
+      },
+      {
+        "title": "Fill the enrolment form",
+        "description": "Complete the Aadhaar enrolment form with accurate personal details.",
+        "documents_required": []
+      },
+      {
+        "title": "Submit biometric and document verification",
+        "description": "Provide fingerprints, iris scan, photograph, and supporting documents.",
+        "documents_required": [
+          "Identity Proof",
+          "Address Proof",
+          "DOB Proof",
+          "Photograph"
+        ]
+      },
+      {
+        "title": "Receive acknowledgement slip",
+        "description": "Collect the slip containing your enrolment ID to track application.",
+        "documents_required": []
+      },
+      {
+        "title": "Download Aadhaar card (after issuance)",
+        "description": "Download e-Aadhaar from the UIDAI website once it's ready.",
+        "documents_required": []
+      }
+    ],
+    "alternatives": {
+      "Online Method": "For updates, use the UIDAI portal (https://uidai.gov.in) or mAadhaar app."
+    },
+    "official_links": [
+      "https://uidai.gov.in",
+      "https://appointments.uidai.gov.in",
+      "https://myaadhaar.uidai.gov.in"
+    ],
+    "offline_alternatives": [
+      "Aadhaar Seva Kendra, General Post Office, Panaji, Goa"
+    ]
+  },
+  "application for driver's license": {
+    "description": [
+      "Apply for a new Driving License",
+      "Registration for Learner’s License",
+      "Permanent License application",
+      "Driving License Form submission",
+      "New DL request"
+    ],
+    "documents": [
+      {
+        "identity_proof": [
+          "Aadhaar Card",
+          "PAN Card",
+          "Passport",
+          "Voter ID Card",
+          "Class 10 Certificate"
+        ]
+      },
+      {
+        "address_proof": [
+          "Utility Bill (Electricity/Water/Telephone)",
+          "Ration Card",
+          "Bank Passbook/Statement",
+          "Aadhaar Card",
+          "Rental Agreement (registered)"
+        ]
+      },
+      "Passport-size Photographs",
+      "Age Proof – Birth Certificate, School Certificate",
+      "Medical Certificate (Form 1A) for applicants over 40 years"
+    ],
+    "steps": [
+      {
+        "title": "Visit Sarathi Parivahan Website",
+        "description": "Go to the Ministry of Road Transport’s official Sarathi website or Goa RTO portal.",
+        "documents_required": []
+      },
+      {
+        "title": "Select License Type",
+        "description": "Choose to apply for a Learner’s or Permanent Driving License.",
+        "documents_required": []
+      },
+      {
+        "title": "Fill the application form",
+        "description": "Enter your personal details, address, vehicle class, and upload documents and photo.",
+        "documents_required": [
+          {
+            "identity_proof_required": {
+              "count": 1,
+              "options": [
+                "Aadhaar Card",
+                "PAN Card",
+                "Passport",
+                "Voter ID Card",
+                "Class 10 Certificate"
+              ]
+            },
+            "address_proof_required": {
+              "count": 1,
+              "options": [
+                "Utility Bill (Electricity/Water/Telephone)",
+                "Ration Card",
+                "Bank Passbook/Statement",
+                "Aadhaar Card",
+                "Rental Agreement (registered)"
+              ]
+            }
+          },
+          "Passport-size Photograph",
+          "Age Proof",
+          "Medical Certificate (Form 1A)"
+        ]
+      },
+      {
+        "title": "Book slot for test",
+        "description": "Choose a date and time for the learner’s or permanent driving test at your nearest RTO.",
+        "documents_required": []
+      },
+      {
+        "title": "Appear for driving test",
+        "description": "Attend the driving skill test and theory test (if applicable).",
+        "documents_required": []
+      },
+      {
+        "title": "License issuance",
+        "description": "If you pass, your license will be issued digitally and sent physically via post.",
+        "documents_required": []
+      }
+    ],
+    "alternatives": {
+      "Offline Application": "You can visit the nearest RTO office and submit Form 2 for LL/DL manually."
+    },
+    "official_links": [
+      "https://sarathi.parivahan.gov.in",
+      "https://goatransport.gov.in"
+    ],
+    "offline_alternatives": [
+      "Regional Transport Office (RTO), Panaji, Goa",
+      "Motor Vehicle Inspector Office",
+      "Designated Driving Schools"
+    ]
+  },
+  "register business": {
+    "description": [
+      "Register a new business",
+      "Apply for company registration",
+      "Request business registration",
+      "Register a startup officially",
+      "Submit documents for business registration"
+    ],
+    "documents": [
+      {
+        "identity_proof": [
+          "Aadhaar Card",
+          "PAN Card",
+          "Voter ID Card",
+          "Passport",
+          "Driving License"
+        ]
+      },
+      {
+        "address_proof": [
+          "Utility Bill (Electricity/Water/Telephone)",
+          "Ration Card",
+          "Aadhaar Card",
+          "Bank Statement (with address)",
+          "Rent Agreement (registered)",
+          "Passport"
+        ]
+      },
+      "Photograph",
+      "Email ID",
+      "Mobile Number",
+      "Partnership Deed (if applicable)"
+    ],
+    "steps": [
+      {
+        "title": "Choose business structure",
+        "description": "Decide on the legal structure of your business, such as Proprietorship, Partnership, LLP, or Private Limited Company.",
+        "documents_required": []
+      },
+      {
+        "title": "Get Digital Signature Certificate (DSC)",
+        "description": "Obtain a DSC for authorized signatories to ensure secure and verified digital filings.",
+        "documents_required": [
+          "PAN Card",
+          "Aadhaar Card",
+          "Photograph"
+        ]
+      },
+      {
+        "title": "Register on Goa Business Portal",
+        "description": "Create an account and log in to the official Goa Single Window portal to start the registration process.",
+        "documents_required": [
+          "Email ID",
+          "Mobile Number"
+        ]
+      },
+      {
+        "title": "Submit application and pay fee",
+        "description": "Fill out the application form with business details, upload required documents, and pay the applicable fee online.",
+        "documents_required": [
+          {
+            "identity_proof_required": {
+              "count": 2,
+              "options": [
+                "Aadhaar Card",
+                "PAN Card",
+                "Voter ID Card",
+                "Passport",
+                "Driving License"
+              ]
+            },
+            "address_proof_required": {
+              "count": 2,
+              "options": [
+                "Utility Bill (Electricity/Water/Telephone)",
+                "Ration Card",
+                "Aadhaar Card",
+                "Bank Statement (with address)",
+                "Rent Agreement (registered)",
+                "Passport"
+              ]
+            }
+          },
+          "Address Proof",
+          "Photograph",
+          "Partnership Deed (if applicable)"
+        ]
+      },
+      {
+        "title": "Get registration certificate",
+        "description": "After verification by the authorities, download your official business registration certificate from the portal.",
+        "documents_required": []
+      }
+    ],
+    "alternatives": {
+      "PAN Card": "Visit your nearest PAN facilitation center to apply manually."
+    },
+    "official_links": [
+      "https://goabusiness.gov.in/register"
+    ],
+    "offline_alternatives": [
+      "Directorate of Industries, Trade & Commerce, Udyog Bhavan, Panaji, Goa",
+      "MSME Facilitation Center, Verna Industrial Estate, Goa"
+    ]
+  },
+  "application for PAN card": {
+    "description": [
+      "Apply for new PAN card",
+      "Reissue lost or damaged PAN card",
+      "Update PAN card details",
+      "Change name or address on PAN card",
+      "Request correction in PAN card"
+    ],
+    "documents": [
+      {
+        "identity_proof": [
+          "Aadhaar Card",
+          "Voter ID Card",
+          "Passport",
+          "Driving License"
+        ]
+      },
+      {
+        "address_proof": [
+          "Utility Bill (Electricity/Water/Telephone)",
+          "Bank Statement",
+          "Ration Card",
+          "Aadhaar Card"
+        ]
+      },
+      "Photograph",
+      "Date of Birth Proof (Birth Certificate/Matriculation Certificate)"
+    ],
+    "steps": [
+      {
+        "title": "Fill PAN application form",
+        "description": "Complete Form 49A online on the NSDL or UTIITSL website.",
+        "documents_required": []
+      },
+      {
+        "title": "Upload documents",
+        "description": "Upload scanned copies of required identity, address, and DOB proofs.",
+        "documents_required": [
+          "Aadhaar Card",
+          "Address Proof",
+          "DOB Proof",
+          "Photograph"
+        ]
+      },
+      {
+        "title": "Pay fee and submit",
+        "description": "Pay the processing fee online and submit the application.",
+        "documents_required": []
+      },
+      {
+        "title": "Receive PAN card",
+        "description": "After verification, PAN card will be delivered by post.",
+        "documents_required": []
+      }
+    ],
+    "alternatives": {
+      "Online Method": "Use NSDL (https://www.onlineservices.nsdl.com) or UTIITSL (https://www.pan.utiitsl.com)."
+    },
+    "official_links": [
+      "https://www.onlineservices.nsdl.com",
+      "https://www.pan.utiitsl.com"
+    ],
+    "offline_alternatives": [
+      "PAN Facilitation Center, Income Tax Department, Panaji, Goa"
+    ]
+  },
+  "Application for residence certificate": {
+    "description": [
+      "Apply for residence certificate",
+      "Get proof of residence",
+      "Request domicile certificate",
+      "Verify permanent address",
+      "Apply for certificate of residence"
+    ],
+    "documents": [
+      {
+        "identity_proof": [
+          "Aadhaar Card",
+          "Voter ID Card",
+          "PAN Card",
+          "Driving License",
+          "Passport"
+        ]
+      },
+      {
+        "address_proof": [
+          "Ration Card",
+          "Utility Bill (Electricity/Water/Telephone)",
+          "Bank Statement (with address)",
+          "Rent Agreement (registered)",
+          "Aadhaar Card"
+        ]
+      },
+      "Photograph",
+      "Self Declaration/Affidavit",
+      "Proof of Residence Duration (like old utility bills, school certificates, etc.)"
+    ],
+    "steps": [
+      {
+        "title": "Prepare required documents",
+        "description": "Gather all necessary documents proving your identity, address, and duration of residence.",
+        "documents_required": []
+      },
+      {
+        "title": "Visit Goa Online Portal",
+        "description": "Login or register at the Goa Online portal to apply for the residence certificate.",
+        "documents_required": [
+          "Email ID",
+          "Mobile Number"
+        ]
+      },
+      {
+        "title": "Fill out application form",
+        "description": "Enter personal details, residential address, duration of stay, and upload relevant documents.",
+        "documents_required": [
+          {
+            "identity_proof_required": {
+              "count": 1,
+              "options": [
+                "Aadhaar Card",
+                "Voter ID Card",
+                "PAN Card",
+                "Driving License",
+                "Passport"
+              ]
+            },
+            "address_proof_required": {
+              "count": 1,
+              "options": [
+                "Ration Card",
+                "Utility Bill (Electricity/Water/Telephone)",
+                "Bank Statement (with address)",
+                "Rent Agreement (registered)",
+                "Aadhaar Card"
+              ]
+            }
+          },
+          "Photograph",
+          "Self Declaration/Affidavit",
+          "Proof of Residence Duration"
+        ]
+      },
+      {
+        "title": "Pay applicable fees",
+        "description": "Pay the application fee online using UPI/net banking/card.",
+        "documents_required": []
+      },
+      {
+        "title": "Download residence certificate",
+        "description": "After verification by the revenue department, download the residence certificate from the portal.",
+        "documents_required": []
+      }
+    ],
+    "alternatives": {
+      "Online Portal": "If unable to access online portal, you can submit physical forms to the local panchayat or municipality."
+    },
+    "official_links": [
+      "https://goaonline.gov.in"
+    ],
+    "offline_alternatives": [
+      "Mamlatdar Office, Panaji, Goa",
+      "Your Local Village Panchayat Office",
+      "Municipal Office depending on your area"
+    ]
+  },
+  "application for cast certificate": {
+    "description": [
+      "Apply for caste certificate",
+      "Get caste certificate from government",
+      "Prove caste status officially",
+      "Submit caste verification request",
+      "Obtain caste certificate for reservation"
+    ],
+    "documents": [
+      {
+        "identity_proof": [
+          "Aadhaar Card",
+          "Voter ID Card",
+          "PAN Card",
+          "Driving License",
+          "Passport"
+        ]
+      },
+      {
+        "address_proof": [
+          "Ration Card",
+          "Utility Bill (Electricity/Water/Telephone)",
+          "Bank Statement (with address)",
+          "Rent Agreement (registered)",
+          "Aadhaar Card"
+        ]
+      },
+      "Photograph",
+      "Caste Proof (Parent’s caste certificate, School leaving certificate, etc.)",
+      "Self Declaration/Affidavit",
+      "Income Certificate (for OBC/SEBC where applicable)"
+    ],
+    "steps": [
+      {
+        "title": "Gather supporting documents",
+        "description": "Ensure availability of caste proof, ID, and address documents along with a self-declaration.",
+        "documents_required": []
+      },
+      {
+        "title": "Apply via Goa Online Portal",
+        "description": "Login or register on the Goa Online portal and go to the 'Caste Certificate' service.",
+        "documents_required": [
+          "Email ID",
+          "Mobile Number"
+        ]
+      },
+      {
+        "title": "Fill and submit application",
+        "description": "Complete the form with personal, caste, and address details, and upload scanned documents.",
+        "documents_required": [
+          {
+            "identity_proof_required": {
+              "count": 1,
+              "options": [
+                "Aadhaar Card",
+                "Voter ID Card",
+                "PAN Card",
+                "Driving License",
+                "Passport"
+              ]
+            },
+            "address_proof_required": {
+              "count": 1,
+              "options": [
+                "Ration Card",
+                "Utility Bill (Electricity/Water/Telephone)",
+                "Bank Statement (with address)",
+                "Rent Agreement (registered)",
+                "Aadhaar Card"
+              ]
+            }
+          },
+          "Photograph",
+          "Caste Proof",
+          "Self Declaration/Affidavit",
+          "Income Certificate (if required)"
+        ]
+      },
+      {
+        "title": "Track status",
+        "description": "You can track the status of your application on the Goa Online portal.",
+        "documents_required": []
+      },
+      {
+        "title": "Download caste certificate",
+        "description": "After successful verification, download the caste certificate digitally signed by the authority.",
+        "documents_required": []
+      }
+    ],
+    "alternatives": {
+      "Offline Submission": "Visit local Talathi or Mamlatdar office with original documents for manual application."
+    },
+    "official_links": [
+      "https://goaonline.gov.in"
+    ],
+    "offline_alternatives": [
+      "Mamlatdar Office, Panaji, Goa",
+      "Village Panchayat Office"
+    ]
+  },
+  "application for Aadar Update": {
+    "description": [
+      "Update Aadhaar photo",
+      "Correct Aadhaar details",
+      "Change Aadhaar address",
+      "Update Aadhaar information online",
+      "Apply for Aadhaar correction"
+    ],
+    "documents": [
+      "Aadhaar Card (Original)",
+      "Photograph (Recent Passport Size)",
+      "Any valid ID proof (for re-verification, optional)",
+      "Update Request Form (filled at center)"
+    ],
+    "steps": [
+      {
+        "title": "Locate Aadhaar Seva Kendra",
+        "description": "Find the nearest Aadhaar Enrolment/Update Centre authorized by UIDAI.",
+        "documents_required": []
+      },
+      {
+        "title": "Book an appointment (optional)",
+        "description": "Visit UIDAI website to book an appointment or directly walk in to the centre.",
+        "documents_required": []
+      },
+      {
+        "title": "Visit the center in person",
+        "description": "Carry your original Aadhaar card and recent passport-sized photograph.",
+        "documents_required": [
+          "Aadhaar Card (Original)",
+          "Photograph"
+        ]
+      },
+      {
+        "title": "Submit biometrics and form",
+        "description": "Fill the Aadhaar Update Form and provide biometric authentication at the center.",
+        "documents_required": [
+          "Update Request Form"
+        ]
+      },
+      {
+        "title": "Pay update fee and get receipt",
+        "description": "Pay the nominal Aadhaar update fee and collect the acknowledgement slip.",
+        "documents_required": []
+      },
+      {
+        "title": "Check update status online",
+        "description": "Use the acknowledgement number to check update status on UIDAI portal.",
+        "documents_required": []
+      }
+    ],
+    "alternatives": {
+      "Photograph Update": "Must be done in person; no online photograph update is allowed as per UIDAI policy."
+    },
+    "official_links": [
+      "https://uidai.gov.in",
+      "https://appointments.uidai.gov.in"
+    ],
+    "offline_alternatives": [
+      "Aadhaar Seva Kendra, Post Office, Panaji",
+      "Common Service Center (CSC) in your locality",
+      "Registrar Office authorized for Aadhaar updates"
+    ]
+  },
+  "application for voter ID card": {
+    "description": [
+      "Apply for new Voter ID",
+      "Register for Voter ID card",
+      "Electoral roll inclusion",
+      "First-time Voter ID application",
+      "Submit Voter ID request"
+    ],
+    "documents": [
+      {
+        "identity_proof": [
+          "Aadhaar Card",
+          "PAN Card",
+          "Passport",
+          "Driving License",
+          "Class 10 Certificate"
+        ]
+      },
+      {
+        "address_proof": [
+          "Utility Bill (Electricity/Water/Telephone)",
+          "Bank Passbook/Statement",
+          "Ration Card",
+          "Aadhaar Card",
+          "Rent Agreement (registered)"
+        ]
+      },
+      "Photograph",
+      "Age Proof (if applying for first time) – Birth Certificate, School Certificate"
+    ],
+    "steps": [
+      {
+        "title": "Visit National Voter Portal",
+        "description": "Go to the official National Voter Services Portal (NVSP) or Goa CEO website.",
+        "documents_required": []
+      },
+      {
+        "title": "Select the appropriate form",
+        "description": "Choose Form 6 for new registration, Form 8 for corrections, Form 7 for deletion.",
+        "documents_required": []
+      },
+      {
+        "title": "Fill in application form",
+        "description": "Provide personal details, address, and upload the required documents and photograph.",
+        "documents_required": [
+          {
+            "identity_proof_required": {
+              "count": 5,
+              "options": [
+                "aadhaar Card",
+                "pan card",
+                "passport",
+                "driving license",
+                "class 10 certificate"
+              ]
+            },
+            "address_proof_required": {
+              "count": 1,
+              "options": [
+                "Utility Bill (Electricity/Water/Telephone)",
+                "Bank Passbook/Statement",
+                "Ration Card",
+                "Aadhaar Card",
+                "Rent Agreement (registered)"
+              ]
+            }
+          },
+          "Photograph",
+          "Age Proof (if applicable)"
+        ]
+      },
+      {
+        "title": "Submit application",
+        "description": "Submit the application online and note the reference number for tracking.",
+        "documents_required": []
+      },
+      {
+        "title": "Verification by BLO",
+        "description": "A Booth Level Officer (BLO) will visit your residence for verification.",
+        "documents_required": []
+      },
+      {
+        "title": "Receive voter ID card",
+        "description": "Post verification, download the digital card or wait for physical delivery by post.",
+        "documents_required": []
+      }
+    ],
+    "alternatives": {
+      "Offline Application": "You can fill and submit Form 6 manually at the nearest Electoral Registration Office (ERO)."
+    },
+    "official_links": [
+      "https://www.nvsp.in",
+      "https://ceogoa.nic.in"
+    ],
+    "offline_alternatives": [
+      "Electoral Registration Office (ERO), Panaji, Goa",
+      "Designated Voter Facilitation Centers",
+      "CSC (Common Service Centers)"
+    ]
+  },
+  "zzz": {}
+}
